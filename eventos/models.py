@@ -12,11 +12,18 @@ class Evento(models.Model):
     hora = models.TimeField()
     numero_participantes = models.IntegerField()
 
+    def __str__(self):
+        return self.titulo
+
 
 class Pessoa(models.Model):
     nome = models.TextField()
     data_nascimento = models.DateField()
-    eventos = models.ManyToManyField(Evento)
+    eventos = models.ManyToManyField(Evento, null=True, blank=True)
+
+    def __str__(self):
+        return self.nome
+
 
 
 
